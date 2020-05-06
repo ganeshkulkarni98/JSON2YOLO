@@ -70,11 +70,12 @@ def split_indices(x, train=0.9, test=0.1, validate=0.0, shuffle=True):  # split 
     return v[:i], v[i:j], v[j:k]  # return indices
 
 
-def make_folders(path='../out/'):
+def make_folders(path='out/'):
     # Create folders
 
     if os.path.exists(path):
         shutil.rmtree(path)  # delete output folder
+    print(100)
     os.makedirs(path)  # make new output folder
     os.makedirs(path + os.sep + 'labels')  # make new labels folder
     os.makedirs(path + os.sep + 'images')  # make new labels folder
