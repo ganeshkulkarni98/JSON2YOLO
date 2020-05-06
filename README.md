@@ -6,12 +6,25 @@ This directory contains software developed by Ultralytics LLC, and **is freely a
 
 The https://github.com/ultralytics/COCO2YOLO repo contains code to convert JSON datasets into YOLO (darknet) format. The code works on Linux, MacOS and Windows.
 
+
+My repo https://github.com/ganeshkulkarni98/COCO2YOLO takes 3 input files and create 'out' file
+
+
+
+
+'''
+
+python run.py --json_file_dir C:\Users\Desktop\voc2coco-master\voc2coco-master\data\coco_output.json --folder_name data --image_folder_dir C:\Users\Desktop\voc2coco-master\voc2coco-master\data\JPEGImages
+
+'''
+
 # Requirements
 
 Python 3.7 or later with the following `pip3 install -U -r requirements.txt` packages:
 
 - `numpy`
 - `tqdm`
+- 'shutil'
 
 # Citation
 
