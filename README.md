@@ -12,11 +12,9 @@ My repo https://github.com/ganeshkulkarni98/COCO2YOLO takes 3 input files and cr
 
 
 
-'''
-
+```
 python run.py --json_file_dir C:\Users\Desktop\voc2coco-master\voc2coco-master\data\coco_output.json --folder_name data --image_folder_dir C:\Users\Desktop\voc2coco-master\voc2coco-master\data\JPEGImages
-
-'''
+```
 
 # Requirements
 
@@ -24,7 +22,7 @@ Python 3.7 or later with the following `pip3 install -U -r requirements.txt` pac
 
 - `numpy`
 - `tqdm`
-- 'shutil'
+- `shutil`
 
 # Citation
 
