@@ -24,7 +24,7 @@ def convert_labelbox_json(name, file, image_folder_dir):
     file_id, file_name, width, height = [], [], [], []
     for i, x in enumerate(tqdm(data['images'], desc='Files and Shapes')):
         file_id.append(x['id'])
-        file_name.append(os.getcwd() + '\out\images\' + x['file_name'].split('IMG_')[-1])
+        file_name.append('\out\images\' + x['file_name'].split('IMG_')[-1])
         width.append(x['width'])
         height.append(x['height'])
 
