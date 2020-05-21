@@ -41,15 +41,9 @@ def convert_labelbox_json(data_folder_path, json_file_dir):
         height.append(x['height'])
 
         # filename
-        if os.path.exists(name + '.txt'):
-            os.remove(name + '.txt')  # delete filename
-            
         with open(name + '.txt', 'a') as file:
             file.write('%s\n' % file_name[i])
-
-        if os.path.exists(name + '.shapes'):
-            os.remove(name + '.shapes')  # delete shapes
-            
+ 
         # shapes
         with open(name + '.shapes', 'a') as file:
             file.write('%g, %g\n' % (x['width'], x['height']))
@@ -57,9 +51,6 @@ def convert_labelbox_json(data_folder_path, json_file_dir):
     # Write *.names file
     for x in tqdm(data['categories'], desc='Names'):
     
-        if os.path.exists(name + '.names'):
-            os.remove(name + '.names')  # delete names
-            
         with open(name + '.names', 'a') as file:
             file.write('%s\n' % x['name'])
 
