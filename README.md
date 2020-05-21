@@ -3,7 +3,7 @@
 Custom dataset in COCO dataset format is given in data folder of this github repo for sample
 
 ```
-python run.py --json_file_dir /content/data/output.json --data_folder_path /content/data
+!python run.py --json_file_dir /content/JSON2YOLO/data/output.json --data_folder_path /content/JSON2YOLO/data
 ```
 
 # Requirements
