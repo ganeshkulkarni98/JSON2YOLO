@@ -62,9 +62,17 @@ def convert_labelbox_json(data_folder_path, json_file_dir):
         # The Labelbox bounding box format is [top left x, top left y, width, height]
         box = np.array(x['bbox'], dtype=np.float64)
         box[:2] += box[2:] / 2  # xy top-left corner to center
-        box[[0, 2]] /= width[i]  # normalize x
-        box[[1, 3]] /= height[i]  # normalize y
-
+        if width[i] == 0:
+            box[0] = 1
+            box[2] = 1    # normalize x
+        else:
+            box[[0, 2]] /= width[i]  # normalize x
+        if height[i] == 0:   
+            box[1] = 1
+            box[3] = 1       # normalize y
+        else:
+            box[[1, 3]] /= height[i]  # normalize y
+            
         if (box[2] > 0.) and (box[3] > 0.):  # if w > 0 and h > 0
             
             
