@@ -46,7 +46,7 @@ def convert_labelbox_json(data_folder_path, json_file_dir):
  
         # shapes
         with open(name + '.shapes', 'a') as file:
-            file.write('%g, %g\n' % (x['width'], x['height']))
+            file.write('%g %g\n' % (x['width'], x['height']))
 
     # Write *.names file
     for x in tqdm(data['categories'], desc='Names'):
