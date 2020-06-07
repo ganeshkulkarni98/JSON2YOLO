@@ -60,10 +60,10 @@ def exif_size(img):
 #                 f.writelines([lines[i] for i in v])
 
 
-def split_files(out_path, file_name, train_ratio, validation_ratio, prefix_path=''):  # split training data
+def split_files(out_path, file_name, train_ratio, prefix_path=''):  # split training data
     file_name = list(filter(lambda x: len(x) > 0, file_name))
     file_name = sorted(file_name)
-    i, j, k = split_indices(file_name, train_ratio, test=0.0, validation_ratio)
+    i, j, k = split_indices(file_name, train_ratio)
     datasets = {'train': i, 'test': j, 'val': k}
     for key, item in datasets.items():
         if item.any():
@@ -72,13 +72,15 @@ def split_files(out_path, file_name, train_ratio, validation_ratio, prefix_path=
                     file.write('%s%s\n' % (prefix_path, file_name[i]))
 
 
-def split_indices(x, train_ratio, test=0.0,validation_ratio, shuffle=True):  # split training data
+def split_indices(x, train_ratio, shuffle=True):  # split training data   
+    test = 0.0
+    validate = int(100 - train_ratio*100)/100
     n = len(x)
     v = np.arange(n)
     if shuffle:
         np.random.shuffle(v)
 
-    i = round(n * train)  # train
+    i = round(n * train_ratio)  # train
     j = round(n * test) + i  # test
     k = round(n * validate) + j  # validate
     return v[:i], v[i:j], v[j:k]  # return indices
@@ -177,7 +179,11 @@ def image_folder2file(folder='images/'):  # from utils import *; image_folder2fi
 
 def image_label_info(labels_folder, images_folder):
   labels_length = len(glob.glob1(labels_folder, "*.txt"))
-  images_length = len(glob.glob1(images_folder, "*.jpg"))
+
+  images_length = 0
+  for formats in img_formats:
+    formats = "*" + formats
+    images_length += len(glob.glob1(images_folder, formats))
   print('Total labels = %d' % (labels_length))
   print('Total images = %d' % (images_length))
 
